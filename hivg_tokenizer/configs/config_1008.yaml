@@ -1,0 +1,17 @@
+# SVG Tokenizer Configuration - 1024 range (default)
+# For 1024x1024 canvas
+
+coord_range: 1008
+relative_range: 1008 
+
+# BPE training parameters
+bpe:
+  num_merges: 500
+  min_frequency: 10
+
+# Token vocabulary size (approx)
+# Structure: 42
+# Commands: 20
+# Coordinates: 1009 (P) + 1009 (d) = 2018
+# Arc flags: 4
+# Total: ~2116 new tokens

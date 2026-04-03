@@ -1,0 +1,133 @@
+# SVG Non-Coordinate Tokens
+# Structure (42) + Command (20) + Arc Flag (4) = 66 tokens
+
+# ============================================================
+# STRUCTURE TOKENS (21 elements x 2 = 42)
+# Auto-generates: <element> and </element> for each
+# ============================================================
+structure:
+  level1: "SVG element tag"
+
+  # element_name: [level2, level3]
+  elements:
+    svg:             ["root container, defines SVG canvas", "scalable vector graphics document"]
+    path:            ["path element, arbitrary shape", "shape defined by path commands"]
+    defs:            ["definitions block, reusable elements", "stores gradients, patterns, symbols"]
+    style:           ["CSS style definition", "contains CSS rules for SVG elements"]
+    linearGradient:  ["linear gradient definition", "color transition along a line"]
+    radialGradient:  ["radial gradient definition", "circular color transition from center"]
+    stop:            ["gradient stop point", "color at specific gradient offset"]
+    g:               ["group container", "groups elements with shared attributes"]
+    rect:            ["rectangle shape", "rectangular form with position and size"]
+    circle:          ["circle shape", "circular form with center and radius"]
+    ellipse:         ["ellipse shape", "oval form with center and radii"]
+    line:            ["line segment", "straight line with start and end points"]
+    polyline:        ["connected line segments", "open shape with multiple points"]
+    polygon:         ["closed polygon", "closed shape with straight edges"]
+    text:            ["text element", "displays textual content with font"]
+    use:             ["element reference", "reuses a defined element"]
+    clipPath:        ["clipping path", "restricts visible region of elements"]
+    mask:            ["alpha mask", "controls transparency with luminance"]
+    pattern:         ["tile pattern", "repeating fill pattern"]
+    filter:          ["visual filter", "applies effects like blur, shadow"]
+    marker:          ["line marker", "arrowhead or endpoint decoration"]
+    symbol:          ["reusable symbol", "template referenced by use element"]
+    # image:           ["embedded image", "raster image embedded in SVG"]
+    feGaussianBlur:  ["gaussian blur filter", "blurs the input image"]
+    feOffset:        ["offset filter", "shifts the input image"]
+    feBlend:         ["blend filter", "combines two inputs using blend mode"]
+    feColorMatrix:   ["color matrix filter", "applies color transformation"]
+    feComposite:     ["composite filter", "combines two inputs with operator"]
+    feMerge:         ["merge filter", "layers multiple inputs"]
+
+# ============================================================
+# COMMAND TOKENS (10 pairs x 2 = 20)
+# Using cmd_ prefix to avoid vocabulary conflicts (e.g., <s> exists in Qwen)
+# ============================================================
+command:
+  level1: "SVG path command"
+
+  # Each command has absolute and relative variants
+  commands:
+    MoveTo:
+      tokens: [cmd_M, cmd_m]
+      params: 2
+      level2: ["absolute moveto, start subpath", "relative moveto, offset subpath"]
+      level3: "moves pen to position without drawing"
+
+    LineTo:
+      tokens: [cmd_L, cmd_l]
+      params: 2
+      level2: ["absolute lineto, draw line", "relative lineto, draw line by offset"]
+      level3: "draws straight line from current point"
+
+    Horizontal:
+      tokens: [cmd_H, cmd_h]
+      params: 1
+      level2: ["absolute horizontal line", "relative horizontal line"]
+      level3: "draws horizontal line, only x changes"
+
+    Vertical:
+      tokens: [cmd_V, cmd_v]
+      params: 1
+      level2: ["absolute vertical line", "relative vertical line"]
+      level3: "draws vertical line, only y changes"
+
+    CurveTo:
+      tokens: [cmd_C, cmd_c]
+      params: 6
+      level2: ["absolute cubic bezier", "relative cubic bezier"]
+      level3: "curve with two control points and endpoint"
+
+    SmoothCurve:
+      tokens: [cmd_S, cmd_s]
+      params: 4
+      level2: ["absolute smooth cubic", "relative smooth cubic"]
+      level3: "continues bezier with reflected first control"
+
+    Quadratic:
+      tokens: [cmd_Q, cmd_q]
+      params: 4
+      level2: ["absolute quadratic bezier", "relative quadratic bezier"]
+      level3: "curve with one control point and endpoint"
+
+    SmoothQuad:
+      tokens: [cmd_T, cmd_t]
+      params: 2
+      level2: ["absolute smooth quadratic", "relative smooth quadratic"]
+      level3: "continues quadratic with reflected control"
+
+    Arc:
+      tokens: [cmd_A, cmd_a]
+      params: 7
+      level2: ["absolute elliptical arc", "relative elliptical arc"]
+      level3: "arc segment with radii, rotation, and flags"
+
+    ClosePath:
+      tokens: [cmd_Z, cmd_z]
+      params: 0
+      level2: ["closepath command", "closepath command"]
+      level3: "closes subpath with line to start point"
+
+# ============================================================
+# ARC FLAG TOKENS (4)
+# ============================================================
+arc_flag:
+  level1: "SVG arc flag parameter"
+
+  flags:
+    large_0:
+      level2: "large-arc-flag zero, smaller arc"
+      level3: "arc takes shorter path, under 180 degrees"
+
+    large_1:
+      level2: "large-arc-flag one, larger arc"
+      level3: "arc takes longer path, over 180 degrees"
+
+    sweep_0:
+      level2: "sweep-flag zero, counterclockwise"
+      level3: "arc curves in negative angle direction"
+
+    sweep_1:
+      level2: "sweep-flag one, clockwise"
+      level3: "arc curves in positive angle direction"
