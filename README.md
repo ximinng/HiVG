@@ -1,6 +1,6 @@
-<h1 align="center">HiVG: Hierarchical SVG Tokenization</h1>
+<h1>HiVG: Hierarchical SVG Tokenization</h1>
 
-<p align="center">
+<p>
     <a href="https://hy-hivg.github.io/"><img src="https://img.shields.io/badge/Project-Page-blue?logo=googlechrome&logoColor=white" alt="Project Page"></a>
     <a href="https://arxiv.org/abs/2604.05072"><img src="https://img.shields.io/badge/arXiv-Paper-b31b1b?logo=arxiv" alt="arXiv"></a>
     <a href="https://github.com/ximinng/HiVG"><img src="https://img.shields.io/badge/GitHub-Code-black?logo=github" alt="GitHub"></a>
