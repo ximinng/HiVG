@@ -2,9 +2,9 @@
 
 <p>
     <a href="https://hy-hivg.github.io/"><img src="https://img.shields.io/badge/Project-Page-blue?logo=googlechrome&logoColor=white" alt="Project Page"></a>
-    <a href="https://arxiv.org/abs/2604.05072"><img src="https://img.shields.io/badge/arXiv-Paper-b31b1b?logo=arxiv" alt="arXiv"></a>
-    <a href="https://github.com/ximinng/HiVG"><img src="https://img.shields.io/badge/GitHub-Code-black?logo=github" alt="GitHub"></a>
+    <a href="https://arxiv.org/abs/2604.05072"><img src="https://img.shields.io/badge/arXiv-2604.05072-b31b1b?logo=arxiv" alt="arXiv"></a>
     <a href="https://github.com/ximinng/HiVG/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
+    <a href="https://huggingface.co/xingxm/HiVG-3B-Base"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow" alt="HuggingFace Models"></a>
 </p>
 
 This repository contains the implementation for **Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling**.
@@ -27,6 +27,7 @@ This repository contains the implementation for **Hierarchical SVG Tokenization:
 
 - [Installation](#installation)
 - [Quick Start](#quick-start)
+- [Model Weights](#model-weights)
 - [Evaluation](#evaluation)
 - [Segment Token Training](#segment-token-training)
 - [Generation Parameters](#generation-parameters)
@@ -56,12 +57,13 @@ pipeline = HiSVGInferencePipeline(
 )
 
 # Image-to-SVG
-result = pipeline.img2svg("/path/to/photo.png")
+result = pipeline.img2svg("assets/cases/w2.png")
 if result["success"]:
     print(result["svg"])
 
 # Text-to-SVG
-result = pipeline.text2svg("A minimalist black phone icon with an outline style")
+result = pipeline.text2svg("The image features a simple, flat-style briefcase with a handle and a central plus symbol. The briefcase is outlined in black with a light teal plus sign, suggesting medical or emergency services. Small decorative dots surround the briefcase, enhancing its minimalistic design.")
+
 if result["success"]:
     with open("output.svg", "w") as f:
         f.write(result["svg"])
@@ -85,6 +87,15 @@ python -m hivg_infer.cli --model_path /path/to/model \
 # Interactive mode
 python -m hivg_infer.cli --model_path /path/to/model --interactive
 ```
+
+## Model Weights
+
+| Model | Description | Download |
+|:---|:---|:---:|
+| HiVG-3B-Base | Base model with hierarchical SVG tokenization | [🤗 HuggingFace](https://huggingface.co/xingxm/HiVG-3B-Base) |
+| HiVG-3B-Instruct | Instruction-tuned model for SVG generation | Coming Soon |
+| HiVG-3B-DwT | Draw-with-Thought fine-tuned model | Coming Soon |
+| HiVG-3B-DwT-RL | DwT model with RL | Coming Soon |
 
 ## Evaluation
 
@@ -225,7 +236,7 @@ If you find HiVG useful in your research, please consider citing:
 @article{xing2026hivg,
     title={Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling},
     author={Xing, Ximing and Xue, Ziteng and Li, Zhenxi and Liang, Weicong and Wang, Linqing and Yang, Zhantao and Hang, Tiankai and Yin, Zijin and Lu, Qinglin and Wang, Chunyu and Yu, Qian},
-    journal={arXiv preprint},
+    journal={arXiv preprint arXiv:2604.05072},
     year={2026}
 }
 ```

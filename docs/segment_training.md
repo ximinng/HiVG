@@ -243,9 +243,6 @@ plan = choose_bpe_sample_plan(
     requested_max_samples=None,
     force_large_run=True,         # bypass the auto-cap
 )
-
-if plan.warning:
-    print(plan.warning)
 ```
 
 ## End-to-End Example
