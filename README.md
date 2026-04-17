@@ -1,18 +1,14 @@
 <h1>HiVG: Hierarchical SVG Tokenization</h1>
 
-<p>
-    <a href="https://hy-hivg.github.io/"><img src="https://img.shields.io/badge/Project-Page-blue?logo=googlechrome&logoColor=white" alt="Project Page"></a>
-    <a href="https://arxiv.org/abs/2604.05072"><img src="https://img.shields.io/badge/arXiv-2604.05072-b31b1b?logo=arxiv" alt="arXiv"></a>
-    <a href="https://huggingface.co/papers/date/2026-04-15"><img src="https://img.shields.io/badge/🤗%20Daily%20Papers-Featured-ff9d00" alt="HuggingFace Daily Papers"></a>
-    <a href="https://github.com/ximinng/HiVG/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
-    <a href="https://huggingface.co/xingxm/HiVG-3B-Base"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow" alt="HuggingFace Models"></a>
+<p align="center">
+  <a href="https://hy-hivg.github.io/"><img src="https://img.shields.io/badge/Project-Page-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Project Page"></a>
+  <a href="https://arxiv.org/abs/2604.05072"><img src="https://img.shields.io/badge/arXiv-2604.05072-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white" alt="arXiv"></a>
+  <a href="https://huggingface.co/papers/date/2026-04-15"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Daily%20Papers-Featured-ff9d00?style=for-the-badge" alt="HuggingFace Daily Papers"></a>
+  <a href="https://github.com/ximinng/HiVG/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"></a>
+  <a href="https://huggingface.co/xingxm/HiVG-3B-Base"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Models-yellow?style=for-the-badge" alt="HuggingFace Models"></a>
 </p>
 
-This repository contains the implementation for **Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling**.
-<!-- <p align="center">
-    This is the official implementation of <br>
-    <b>Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling</b>
-</p> -->
+This repository contains the official implementation of the paper "Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling".
 
 <p align="center">
   <img src="assets/HiVG_tokenizer.gif" width="100%" alt="HiVG Tokenizer">
