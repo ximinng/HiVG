@@ -3,6 +3,7 @@
 <p>
     <a href="https://hy-hivg.github.io/"><img src="https://img.shields.io/badge/Project-Page-blue?logo=googlechrome&logoColor=white" alt="Project Page"></a>
     <a href="https://arxiv.org/abs/2604.05072"><img src="https://img.shields.io/badge/arXiv-2604.05072-b31b1b?logo=arxiv" alt="arXiv"></a>
+    <a href="https://huggingface.co/papers/date/2026-04-15"><img src="https://img.shields.io/badge/🤗%20Daily%20Papers-Featured-ff9d00" alt="HuggingFace Daily Papers"></a>
     <a href="https://github.com/ximinng/HiVG/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
     <a href="https://huggingface.co/xingxm/HiVG-3B-Base"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow" alt="HuggingFace Models"></a>
 </p>

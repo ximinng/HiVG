@@ -12,7 +12,7 @@ from typing import Dict, List, Optional, Union
 
 import torch
 from PIL import Image
-from transformers import AutoModelForCausalLM, AutoProcessor
+from transformers import AutoConfig, AutoModelForCausalLM, AutoProcessor
 
 from .postprocess import postprocess_output
 
@@ -23,6 +23,35 @@ from .postprocess import postprocess_output
 
 def _load_pil_image(image_path: str) -> Image.Image:
     return Image.open(image_path).convert("RGB")
+
+
+def _resolve_model_class(model_path: str, trust_remote_code: bool):
+    """
+    Select the correct HF model class based on the checkpoint's architecture.
+
+    Vision-language checkpoints like Qwen2.5-VL cannot be loaded through
+    ``AutoModelForCausalLM`` and require their task-specific class instead.
+    """
+    config = AutoConfig.from_pretrained(model_path, trust_remote_code=trust_remote_code)
+    model_type = getattr(config, "model_type", "") or ""
+
+    if model_type == "qwen2_5_vl":
+        from transformers import Qwen2_5_VLForConditionalGeneration
+        return Qwen2_5_VLForConditionalGeneration
+    if model_type == "qwen2_vl":
+        from transformers import Qwen2VLForConditionalGeneration
+        return Qwen2VLForConditionalGeneration
+
+    architectures = getattr(config, "architectures", None) or []
+    if architectures:
+        arch = architectures[0]
+        try:
+            import transformers as _tf
+            return getattr(_tf, arch)
+        except AttributeError:
+            pass
+
+    return AutoModelForCausalLM
 
 
 def _build_vl_messages(
@@ -215,7 +244,8 @@ class HiSVGInferencePipeline:
             model_path, trust_remote_code=trust_remote_code
         )
 
-        self.model = AutoModelForCausalLM.from_pretrained(
+        model_cls = _resolve_model_class(model_path, trust_remote_code)
+        self.model = model_cls.from_pretrained(
             model_path,
             device_map=device_map,
             torch_dtype=dtype,
